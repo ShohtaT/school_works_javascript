@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <img src="imgGreece1.jpg" name="myimg" style="position:absolute;left:0;top:50">
+    </body>
+    <script>
+        // 写真を右に動かす関数
+        function movePicture(){
+        if(parseInt(document.myimg.style.left) < 400)// 写真の左上の位置が400px未満で動く
+            document.myimg.style.left = parseInt(document.myimg.style.left) + 10;// 一度に10px右に動く
+        }
+        setInterval(movePicture, 100);// 0.1secごとにsetpositionを呼出す
+    </script>
+</html>

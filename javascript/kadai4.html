@@ -1,0 +1,115 @@
+<html>
+    <head>
+        <script>
+            // 各ボタンの初期値
+            var number = [0, 0, 0, 0, 0];
+            // 1秒の間に各ボタンがクリックされたかを示すフラグ(数字の更新でリセット)
+            var buttonPressedFlags = [0, 0, 0, 0, 0];
+            var score = 0;
+            var Count_Clicked = 0;
+            var time = 21;
+            var cycleInterval;
+
+            // ゲーム開始、1000msごとにcycle()を呼び出す
+            function game(){
+                document.getElementById("scoreText").value = 0;
+                cycle();
+                cycleInterval = setInterval("cycle()", 1000);
+            }
+
+            // 1000ms毎に行う関数
+            function cycle(){
+                
+                for(var i = 0; i < 5; i++){
+                    number[i] = Math.floor(Math.random() * 100);// 5つの要素に1-100までの数をランダムに変更
+                    buttonPressedFlags[i] = 0;// ボタンが押された状態をリセット
+                }
+                // ランダムに決定した数をボタンに書く
+                document.getElementById("gs_1").value = number[0];
+                document.getElementById("gs_2").value = number[1];
+                document.getElementById("gs_3").value = number[2];
+                document.getElementById("gs_4").value = number[3];
+                document.getElementById("gs_5").value = number[4];
+                //Startボタンに残り時間を表示
+                time -= 1;
+                document.getElementById("gs_start").value = time;
+
+                // timeがなくなったらスコアを表示
+                if(time == 0){
+                    // ボタンは消す
+                    document.getElementById('gs_start').style.display = "none";
+                    document.g_switch.gs_1.style.display = "none";
+                    document.g_switch.gs_2.style.display = "none";
+                    document.g_switch.gs_3.style.display = "none";
+                    document.g_switch.gs_4.style.display = "none";
+                    document.g_switch.gs_5.style.display = "none";
+                    
+                    clearInterval(cycleInterval);// 1000msごとのカウントを停止
+                }
+            }
+
+            // 最大値を探す関数
+            function MaxEllement(number){
+                var Max = 0;
+                for(i=0; i<5; i++){
+                    if(Max < number[i]){
+                        Max = number[i];
+                    }
+                }
+                return Max;
+            }
+
+            // ボタンが押されたときの関数
+            function addScore(i){
+                if(buttonPressedFlags[i] == 0){
+                    // フラグを立てる
+                    buttonPressedFlags[i] = 1;
+                    // 押されたボタンの番号に書かれた数字が最大の時、加算
+                    if(number[i] == MaxEllement(number)){
+                        score += number[i];
+                        Count_Clicked++;
+                        moveDot();
+                    }
+                    // そうでない時、減算
+                    else{
+                        score -= number[i];
+                    }
+                    //スコアを表示
+                    document.getElementById("scoreText").value = score;
+                }
+            }
+
+            // 数直線のドットを動かす関数
+            function moveDot(){
+                document.getElementById('dot').style.left = parseInt(document.getElementById('dot').style.left) + 13;
+            }
+            
+        </script>
+    </head>
+    <body>
+        <img src="kadai4_memori.png" id="memori" width="305" height="60" style="position:absolute;left:0px;top:160px">
+
+        <p>
+            <input type="button" id="gs_start" value="Start" style="width:50px; height: 50px; font-size:20px; position:absolute;left:130px;top:5px" onClick="game()">
+        </p>
+        <form name="g_switch">
+            <input type="button" id="gs_1" value="SW1" style="width:50px; height: 50px; font-size:20px; position:absolute;left:10px;top:60px" onClick="addScore(0)">
+            <input type="button" id="gs_2" value="SW2" style="width:50px; height: 50px; font-size:20px; position:absolute;left:70px;top:60px" onClick="addScore(1)">
+            <input type="button" id="gs_3" value="SW3" style="width:50px; height: 50px; font-size:20px; position:absolute;left:130px;top:60px" onClick="addScore(2)">
+            <input type="button" id="gs_4" value="SW4" style="width:50px; height: 50px; font-size:20px; position:absolute;left:190px;top:60px" onClick="addScore(3)">
+            <input type="button" id="gs_5" value="SW5" style="width:50px; height: 50px; font-size:20px; position:absolute;left:250px;top:60px" onClick="addScore(4)">
+        </form>
+        
+        <div id="txt1" style = "position:absolute;left:10px;top:120px">
+            成功クリック回数
+        </div>
+        <div id="txt2" style = "position:absolute;left:10px;top:210px">
+            SCORE
+        </div>
+        <div id="dot" style="position:absolute;left:15px;top:150px">
+            ■
+        </div>
+
+        <input type="text" id="scoreText" value="0" style="width:60px; height: 30px; font-size:20px; position:absolute;left:30px;top:230px">
+    </body>
+</html>

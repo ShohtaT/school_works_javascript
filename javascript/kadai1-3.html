@@ -1,0 +1,46 @@
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <form name="number">
+        n=<input type='text' name='n'><br/><!--nの入力を求める-->
+        m=<input type='text' name='m'><br/><!--mの入力を求める-->
+        <input type='button' id='button' value='GO'><!--計算実行ボタン-->
+    </form>
+    </head>
+
+    <body>
+    </body>
+
+    <script>
+    function calculate(){
+        var n = window.number.n.value;// nにnの入力値を保存
+        var m = window.number.m.value;// mにmの入力値を保存
+
+        document.write("<table border='1'>");
+        // 最上行
+        document.write("\
+        <tr bgcolor='gray'>\
+        <td>べき数</td>\
+        <td>" + n + "</td>\
+        <td>" + m + "</td>\
+        <td>sum</td>\
+        </tr>\
+        ");
+
+        // 計算が行われる行
+        for(var i = 0; i <= 5; i++){// 1行ずつ
+        document.write("\
+        <tr>\
+        <td bgcolor='gray'>" + i + "</td>\
+        <td>" + n ** i + "</td>\
+        <td>" + m ** i + "</td>\
+        <td>" + (n ** i + m ** i)  + "</td>\
+        ");
+        }
+        document.write("</table>");
+    }
+
+    document.getElementById("button").onclick = calculate;//GOボタンでcalculateが呼出される
+
+    </script>
+</html>

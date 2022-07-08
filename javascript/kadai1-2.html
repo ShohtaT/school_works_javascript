@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <p>
+            文字列strからキーワードkeyの個数を表示させ、削除した文字列を表示させる.
+        </p>
+    </head>
+    <body>
+        <script type="text/javascript">
+            var str = new String(prompt("string"));// 文字列を入力
+            var key = new String(prompt("keyword"));// キーワードを入力
+            document.write("文字列 　　　　　= "+str+"<br />");
+            document.write("キーワード 　　　= "+key+"<br />");
+
+            var count = (str.match(RegExp(key,"g"))).length;//keyを探索して個数をカウント
+            document.write("キーワードの個数 = "+count+"<br />");
+
+            var new_str = str.split(key).join("");//strからkeyを削除して繋げた文字列
+            document.write("新たな文字列 　　= "+new_str+"<br />");
+        </script>
+    </body>
+
+</html>

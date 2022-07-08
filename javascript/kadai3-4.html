@@ -1,0 +1,29 @@
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <div id="color">
+        <p>■■■■■</p><!--表示-->
+    </div>
+
+    <form name = "bkmkmenu"><!--radioオブジェクト-->
+        <input type = "radio" name = "bkmks" value = "red">赤<br>
+        <input type = "radio" name = "bkmks" value = "blue">青<br>
+        <input type = "radio" name = "bkmks" value = "yellow">黄<br>
+        <input type = "radio" name = "bkmks" value = "black">黒<br>
+        <input type = "radio" name = "bkmks" value = "green">緑<br>
+        <input type = "button" name = "bkmks" value = "文字色変更" onclick="ChangeColor()"><br>
+    </form>
+    </head>
+
+    <body>
+    <script>
+    // 要素を上から一つずつ確認
+    function ChangeColor() {
+        for (var i=0; i<document.bkmkmenu.bkmks.length; i++) {
+        if (document.bkmkmenu.elements[i].checked)// チェックがある項目について
+            document.getElementById("color").style.color = document.bkmkmenu.elements[i].value;
+        }
+    }
+    </script>
+    </body>
+</html>

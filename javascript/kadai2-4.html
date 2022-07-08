@@ -1,0 +1,53 @@
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <h1>行きたい聖地候補</h1>
+    <h2>~日向坂46~</h2>
+    </head>
+
+    <body>
+        <script>
+            var windows = new Array[5];
+    
+            // 新しいウィンドウを開く
+            function createNewWindow(URL, n){
+                windows[n] = window.open(URL, "new window", "width=400, height=600");
+            }
+    
+            // ウィンドウを閉じる
+            function CloseWindow(n){
+                windows[n].close();
+            }
+    
+        </script>
+
+        <table>
+            <tr><!--URL_1-->
+                <td>みなかみバンジー</td>
+                <td><input type="button" value="Open" onclick="createNewWindow('http://www.bungyjapan.com/minakami/', 0)"></td>
+                <td><input type="button" value="Close" onclick="CloseWindow('http://www.bungyjapan.com/minakami/')"></td>
+            </tr>
+            <tr><!--URL_2-->
+                <td>こんにゃくパーク</td>
+                <td><input type="button" value="Open" onclick="createNewWindow('https://konnyaku-park.com/', 0)"></td>
+                <td><input type="button" value="Close" onclick="CloseWindow('https://konnyaku-park.com/')"></td>
+            </tr>
+            <tr><!--URL_3-->
+                <td>養老天命反転地</td>
+                <td><input type="button" value="Open" onclick="createNewWindow('https://www.yoro-park.com/facility-map/hantenchi/', 0)"></td>
+                <td><input type="button" value="Close" onclick="CloseWindow('https://www.yoro-park.com/facility-map/hantenchi/')"></td>
+            </tr>
+            <tr><!--URL_4-->
+                <td>高秀牧場</td>
+                <td><input type="button" value="Open" onclick="createNewWindow('https://www.takahide-dairyfarm.com/', 0)"></td>
+                <td><input type="button" value="Close" onclick="CloseWindow('https://www.takahide-dairyfarm.com/')"></td>
+            </tr>
+            <tr><!--URL_5-->
+                <td>旧石川組製糸西洋館</td>
+                <td><input type="button" value="Open" onclick="createNewWindow('http://www.city.iruma.saitama.jp/event/event_info/seiyoukan_koukai.html', 0)"></td>
+                <td><input type="button" value="Close" onclick="CloseWindow('http://www.city.iruma.saitama.jp/event/event_info/seiyoukan_koukai.html')"></td>
+            </tr>
+        </table>    
+    </body>
+
+</html>

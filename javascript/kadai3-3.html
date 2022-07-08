@@ -1,0 +1,28 @@
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <form name = "bkmkmenu"><!--名前を付けてform-->
+        <select name ="bkmks" onchange = "changePic()"><!--選択するとchangePicへ-->
+            <option>写真を選択
+            <option value = "imgGreece1.jpg" src="imgGreece1.jpg">imgGreece1.jpg
+            <option value = "imgGreece2.jpg" src="imgGreece2.jpg">imgGreece2.jpg
+            <option value = "imgGreece3.jpg" src="imgGreece3.jpg">imgGreece3.jpg
+        </select>
+    </form>
+    </head>
+
+    <body>
+    <script>
+        // nameという名前の中で画像を変える
+        function changePic(){
+            var selected = document.bkmkmenu.bkmks.selectedIndex;
+            if(selected > 0){// 選んだ画像に変える
+                document.images["myimg"].src = document.bkmkmenu.bkmks.options[selected].value;
+            }
+        }
+    </script>
+
+    <img src="imgGreece1.jpg" name="myimg"><!--画像を表示-->
+    </body>
+
+</html>
