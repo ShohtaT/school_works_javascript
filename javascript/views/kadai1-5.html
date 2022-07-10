@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <h1>スライドショー</h1>
+    </head>
+    <body>
+        <button id="playButton">スライドショー開始</button>
+        <p>5秒毎に画像が切り替わります.</br></p>
+        <img src="img1.png" id="pics">  
+        <!-- buttonで開始/終了 -->
+    </body>
+
+    <script>
+        const picArray = new Array(// 画像を配列に保存
+        {src: "img1.png"},
+        {src: "img2.png"},
+        {src: "img3.png"},
+        );
+
+        let counter = 0;
+
+        // 画像を切り替える関数
+        function changePicture() {
+        if (counter < picArray.length) {
+            document.getElementById('pics').src = picArray[counter].src;
+            counter++;
+        } else {
+            document.getElementById('pics').src = picArray[0].src;
+            counter = 1;
+        } 
+        }
+
+        let playingID = 0;
+
+        // 画像の再生と停止を行う
+        function playSlidedeshow () {
+        if (playingID == 0) {
+            document.getElementById('playButton').innerHTML = 'スライドショー終了';
+            playingID = setInterval(changePicture, 5000);// スライドショーのタイマーを作る
+        } else {
+            document.getElementById('playButton').innerHTML = 'スライドショー開始';
+            clearInterval(playingID);// タイマーをクリア
+            playingID = 0;
+        }
+        }
+        
+        document.getElementById("playButton").onclick = playSlidedeshow;
+
+        </script>
+</html>

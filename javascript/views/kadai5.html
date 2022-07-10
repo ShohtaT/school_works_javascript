@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <h>
+            Select a word that the sentence means.<br>
+        </h>
+        <script>
+            
+            function answer(){
+                var point = 0;
+                if(document.question1.elements[2].checked){
+                    point++;
+                }
+                if(document.question2.elements[0].checked){
+                    point++;
+                }
+                if(document.question3.elements[0].checked){
+                    point++;
+                }
+                document.score.tresult.value = point;
+                point = 0;
+            }
+        </script>
+    </head>
+    <body>
+        <form name = "question1">Q1. work together well with other components<br><!--radioオブジェクト-->
+            <input type = "radio" name = "q1">spacious<br>
+            <input type = "radio" name = "q1">malware<br>
+            <input type = "radio" name = "q1">compatible<br><!--答-->
+            <input type = "radio" name = "q1">terrestrial<br>
+        </form>
+        <form name = "question2">Q2. a fact or object that helps to solve mysteries<br><!--radioオブジェクト-->
+            <input type = "radio" name = "q2">clue<br><!--答-->
+            <input type = "radio" name = "q2">big<br>
+            <input type = "radio" name = "q2">codec<br>
+            <input type = "radio" name = "q2">posture<br>
+        </form>
+        <form name = "question3">Q3. works smoothly without any trouble<br><!--radioオブジェクト-->
+            <input type = "radio" name = "q3">reliable<br><!--答-->
+            <input type = "radio" name = "q3">integrate<br>
+            <input type = "radio" name = "q3">malware<br>
+            <input type = "radio" name = "q3">adequate<br>
+        </form>
+        <input type = "button" value = "ANSWER" onclick="answer()"><br>
+
+        <form name = "score">
+            Your score : <input type = "text" name = "tresult" size = 3><!--得点の出力-->
+        </form>
+  
+    </body>
+</html>

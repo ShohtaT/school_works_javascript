@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <h1>文字の色が2秒毎に変わる</h1>
+        <button id="playButton" onclick="playSlidedeshow();">PLAY</button>
+        <!-- buttonで開始/終了 -->
+    </head>
+    <body>
+        <div id="txt" style = "position:absolute;left:50px;top:100px">
+            This text is located at (50px, 100px). ←このテキスト部分が(50px, 100px)に配置される．
+        </div>
+    </body>
+    <script>
+        let i = 0;
+        let color = new Array("red", "blue", "yellow");
+        function changecolor(){
+            i++;
+            if(i >= color.length) i=0;
+            document.getElementById("txt").style.color = color[i];
+        }
+
+        let playingID = 0;
+
+        function playSlidedeshow () {
+        if (playingID == 0) {
+            document.getElementById('playButton').innerHTML = 'STOP';
+            playingID = setInterval(changecolor, 2000);// スライドショーの2秒タイマーを作る
+        } else {
+            document.getElementById('playButton').innerHTML = 'START';
+            clearInterval(playingID);// タイマーをクリア
+            playingID = 0;
+        }
+        }
+        
+    </script>
+</html>

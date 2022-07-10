@@ -1,0 +1,42 @@
+<html>
+    <head>
+    </head>
+
+    <body>
+        <form >
+          <p>
+            start
+            <input type="date" id="start" value="2022-04-01" />
+            <!-- typeをdateに指定し、idを好きな値に指定できる。valueは要素のデフォルト値-->
+          </p>
+          <p>
+            end 
+            <input type="date" id="end" value="2022-05-01" />
+            <!-- typeをdateに指定し、idを好きな値に指定できる。valueは要素のデフォルト値-->
+          </p>
+          <input type="button" id="button" value="submit" />
+          <!-- buttonで提出 -->
+        </form>
+    </body>
+
+    <script>
+    function submitButton(){
+        var start = new Date(document.getElementById("start").value);
+        // startで入力した日付をstartに保存
+        var end   = new Date(document.getElementById("end").value);
+        // endで入力した日付をendに保存
+
+        var spend_day = parseInt((end - start) / 86400000);
+        // 一日は86400000msec
+        window.alert("経過日数は"+spend_day+"日です.");
+
+        var spend_week = parseInt((end - start) / 86400000 / 7);
+        window.alert("経過週数は"+spend_week+"週です.");
+        // 一週は86400000*7msec
+    }
+        
+    document.getElementById("button").onclick = submitButton;
+    //submitボタンでsubmitButtonが呼出される
+
+    </script>
+</html>

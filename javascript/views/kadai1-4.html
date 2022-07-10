@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <p>画像をクリックで半分にする/元に戻す</p>
+  </head>
+
+<body>
+  <img src="img1.png" name="myImg1" id="image1" onclick="func1()">
+
+  <script>
+    // 画像サイズの初期値
+    document.images["myImg1"].width = 640;
+    document.images["myImg1"].height = 480;
+
+    // クリックしたらこの関数に飛ぶ
+    function func1() {
+      if(document.images["myImg1"].width == 640) {// 縮小
+        document.images["myImg1"].width = 320;
+        document.images["myImg1"].height = 240;
+      } else {// 拡大
+        document.images["myImg1"].width = 640;
+        document.images["myImg1"].height = 480;
+      }
+    }
+    
+    document.getElementById("image1").onclick = func1;// クリックでfunc1へ
+
+    </script>
+  </body>
+</html>

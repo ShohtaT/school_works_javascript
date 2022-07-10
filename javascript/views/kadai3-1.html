@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <h1>LOG IN to IED</h1>
+    </head>
+
+    <body>
+    <form>
+        login ID: <input type="text" size="10" id="id"><br/><!--IDの入力-->
+        password: <input type="password" size="10" id="pass"><br/><!--パスワードの入力（見えない）-->
+        <input type="button" value="GO" id="GO">
+    </form>
+    </body>
+
+    <script>
+        function visPass () {//IDとパスワードの一致を調べて分岐させる関数
+            if(document.getElementById('id').value == document.getElementById('pass').value){
+                window.open('https://www.ied.inf.uec.ac.jp/support/projects/ied-support/wiki', "new window", "width=400, height=600");
+                //IDとパスワードが一致するとIEDのページが開く
+            }
+            else{
+                window.alert ("Password incrrect");
+                //IDとパスワードが一致しないとアラートが表示
+            }
+        }
+
+        document.getElementById("GO").onclick=visPass;// GOボタンで動く
+    </script>
+
+</html>
